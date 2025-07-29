@@ -20,7 +20,7 @@ public partial class Camera : Camera2D
         {
             if (_canvasSize == value) return;
             _canvasSize = value;
-            Zoom = GetViewportRect().Size / value;
+            Zoom = GetDefaultZoom();
         }
     }
 
@@ -70,12 +70,21 @@ public partial class Camera : Camera2D
     {
         if (DoubleClickAvailable)
         {
-            Zoom = GetViewportRect().Size / CanvasSize;
+            Zoom = GetDefaultZoom();
             return;
         }
         DoubleClickAvailable = true;
         await Task.Delay(500);
         DoubleClickAvailable = false;
+    }
+
+    private Vector2 GetDefaultZoom()
+    {
+        var fullZoom = GetViewportRect().Size / CanvasSize;
+        var normalZoom = Vector2.One;
+        var x = Math.Min(fullZoom.X, normalZoom.X);
+        var y = Math.Min(fullZoom.Y, normalZoom.Y);
+        return new Vector2(x, y);
     }
 
 }
