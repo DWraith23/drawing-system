@@ -63,6 +63,11 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "Load Picture"
 
+[node name="Load Canvas" type="Button" parent="CenterContainer/Panel/Contents"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Load Canvas"
+
 [node name="Spacer 2" type="Control" parent="CenterContainer/Panel/Contents"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
