@@ -13,7 +13,8 @@ config_version=5
 config/name="Drawing System"
 run/main_scene="res://DrawingSystem/start_menu.tscn"
 config/features=PackedStringArray("4.3", "C#", "Forward Plus")
-boot_splash/show_image=false
+boot_splash/image="res://logo.png"
+config/icon="res://logo.png"
 
 [dotnet]
 
