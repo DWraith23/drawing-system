@@ -1,0 +1,111 @@
+[gd_scene load_steps=5 format=3 uid="uid://r07ye5u3sq5y"]
+
+[ext_resource type="PackedScene" uid="uid://cyjh0m34yy8wo" path="res://DrawingSystem/rollout_menu.tscn" id="1_d2fd2"]
+[ext_resource type="Script" path="res://DrawingSystem/VerticalOptionsBar.cs" id="1_joxu8"]
+[ext_resource type="PackedScene" uid="uid://bxgdib5iu00w0" path="res://DrawingSystem/rollout_panel.tscn" id="2_26wpb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mua2h"]
+bg_color = Color(0.0317595, 0.0198777, 0.00435817, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_top = 4.0
+expand_margin_bottom = 12.0
+
+[node name="Vertical Options Bar" type="Control"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 3
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+script = ExtResource("1_joxu8")
+
+[node name="Panel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Contents" type="VBoxContainer" parent="Panel"]
+layout_mode = 2
+
+[node name="Line Styles" parent="Panel/Contents" instance=ExtResource("1_d2fd2")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+text = "Line Styles"
+ButtonNames = PackedStringArray("Freehand", "Line", "Circle")
+Direction = 3
+ButtonsToggleable = true
+ButtonsGrouped = true
+
+[node name="Line Properties" parent="Panel/Contents" instance=ExtResource("2_26wpb")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+text = "Line
+Properties"
+Direction = 3
+
+[node name="Child Positioner" parent="Panel/Contents/Line Properties" index="0"]
+visible = true
+position = Vector2(89, 0)
+
+[node name="Panel" parent="Panel/Contents/Line Properties/Child Positioner" index="0"]
+visible = false
+offset_left = 4.0
+offset_top = 0.0
+offset_right = 204.0
+offset_bottom = 119.0
+
+[node name="Properties" type="VBoxContainer" parent="Panel/Contents/Line Properties/Child Positioner/Panel" index="0"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Color Label" type="Label" parent="Panel/Contents/Line Properties/Child Positioner/Panel/Properties"]
+layout_mode = 2
+text = "Color:"
+
+[node name="Color" type="ColorPickerButton" parent="Panel/Contents/Line Properties/Child Positioner/Panel/Properties"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 4
+text = "Color"
+
+[node name="Thickness Label" type="Label" parent="Panel/Contents/Line Properties/Child Positioner/Panel/Properties"]
+layout_mode = 2
+text = "Size(10):"
+
+[node name="Thickness" type="HSlider" parent="Panel/Contents/Line Properties/Child Positioner/Panel/Properties"]
+custom_minimum_size = Vector2(200, 30)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/slider = SubResource("StyleBoxFlat_mua2h")
+min_value = 1.0
+max_value = 20.0
+value = 10.0
+tick_count = 20
+ticks_on_borders = true
+
+[node name="Clear" type="Button" parent="Panel/Contents"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+text = "Clear"
+
+[node name="Menu" parent="Panel/Contents" instance=ExtResource("1_d2fd2")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+text = "Menu"
+ButtonNames = PackedStringArray("New", "Export", "Save", "Load", "Exit")
+Direction = 3
+
+[editable path="Panel/Contents/Line Properties"]

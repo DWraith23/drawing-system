@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://cwninl0pqo85n"]
+
+[ext_resource type="Script" path="res://DrawingSystem/Canvas.cs" id="1_7enn7"]
+[ext_resource type="PackedScene" uid="uid://cf1fp6aj0g1bc" path="res://DrawingSystem/drawing_system.tscn" id="1_56i64"]
+[ext_resource type="Script" path="res://DrawingSystem/Camera.cs" id="3_27aqp"]
+[ext_resource type="PackedScene" uid="uid://hrq4j8ru6jx2" path="res://DrawingSystem/horizontal_options_bar.tscn" id="4_b86fu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jbtth"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="Canvas" type="Node2D"]
+script = ExtResource("1_7enn7")
+CanvasSize = Vector2(2000, 2000)
+
+[node name="Background" type="PanelContainer" parent="."]
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jbtth")
+
+[node name="Loaded Image" type="TextureRect" parent="."]
+mouse_filter = 2
+
+[node name="Camera" type="Camera2D" parent="."]
+anchor_mode = 0
+script = ExtResource("3_27aqp")
+
+[node name="Drawing System" parent="." instance=ExtResource("1_56i64")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Options" parent="CanvasLayer" instance=ExtResource("4_b86fu")]
+offset_top = -50.0
+
+[connection signal="ClearButtonPressed" from="CanvasLayer/Options" to="Drawing System" method="OnClearButtonPressed"]
+[connection signal="LineColorChanged" from="CanvasLayer/Options" to="Drawing System" method="OnColorSelected"]
+[connection signal="LineStylesButtonPressed" from="CanvasLayer/Options" to="Drawing System" method="OnLineStylesButtonPressed"]
+[connection signal="LineThicknessChanged" from="CanvasLayer/Options" to="Drawing System" method="OnThicknessChanged"]
+[connection signal="MenuButtonPressed" from="CanvasLayer/Options" to="Drawing System" method="OnMenuButtonPressed"]

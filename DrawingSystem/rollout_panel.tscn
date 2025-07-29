@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxgdib5iu00w0"]
+
+[ext_resource type="Script" path="res://DrawingSystem/RolloutPanel.cs" id="1_q7vxf"]
+
+[node name="Rollout Panel" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0
+toggle_mode = true
+script = ExtResource("1_q7vxf")
+
+[node name="Child Positioner" type="Node2D" parent="."]
+visible = false
+position = Vector2(0, 8)
+
+[node name="Panel" type="PanelContainer" parent="Child Positioner"]
+offset_top = 4.0
+offset_bottom = 4.0
+grow_vertical = 0

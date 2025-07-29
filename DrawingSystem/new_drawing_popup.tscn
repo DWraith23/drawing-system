@@ -1,0 +1,88 @@
+[gd_scene load_steps=2 format=3 uid="uid://dj8fakva8gwpm"]
+
+[ext_resource type="Script" path="res://DrawingSystem/NewDrawingPopup.cs" id="1_fc8yp"]
+
+[node name="New Drawing Popup" type="PopupPanel"]
+initial_position = 2
+size = Vector2i(264, 282)
+visible = true
+script = ExtResource("1_fc8yp")
+
+[node name="Contents" type="VBoxContainer" parent="."]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 260.0
+offset_bottom = 278.0
+
+[node name="Label" type="Label" parent="Contents"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Select Canvas Options"
+horizontal_alignment = 1
+
+[node name="Spacer 1" type="Control" parent="Contents"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Width" type="HBoxContainer" parent="Contents"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Contents/Width"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Width:"
+horizontal_alignment = 2
+
+[node name="SpinBox" type="SpinBox" parent="Contents/Width"]
+layout_mode = 2
+min_value = 1.0
+max_value = 4000.0
+value = 500.0
+alignment = 1
+
+[node name="Height" type="HBoxContainer" parent="Contents"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Contents/Height"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Height:"
+horizontal_alignment = 2
+
+[node name="SpinBox" type="SpinBox" parent="Contents/Height"]
+layout_mode = 2
+min_value = 1.0
+max_value = 4000.0
+value = 500.0
+alignment = 1
+
+[node name="Background Color" type="HBoxContainer" parent="Contents"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Contents/Background Color"]
+layout_mode = 2
+text = "Background Color:"
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Contents/Background Color"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+color = Color(1, 1, 1, 1)
+
+[node name="Spacer 2" type="Control" parent="Contents"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Buttons" type="HBoxContainer" parent="Contents"]
+layout_mode = 2
+alignment = 1
+
+[node name="Confirm" type="Button" parent="Contents/Buttons"]
+layout_mode = 2
+text = "Confirm"
+
+[node name="Cancel" type="Button" parent="Contents/Buttons"]
+layout_mode = 2
+text = "Cancel"
